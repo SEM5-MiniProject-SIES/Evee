@@ -9,7 +9,7 @@ export default function App() {
   return (
     <Wrapper className="App">
       <Canvas className="canvas">
-        <OrbitControls />
+        <OrbitControls enableZoom={false}/>
         <ambientLight intensity={0.5} />
         <directionalLight position={[-2, 5, 2]} intensity={1} />
         <Suspense fallback={null}>
@@ -21,7 +21,5 @@ export default function App() {
 }
 
 const Wrapper = styled.div`
-  position: relative;
-  background: #1f1144;
-  height: 300px;
+  height: 950px;
 `;
