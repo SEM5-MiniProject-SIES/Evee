@@ -3,7 +3,7 @@ import * as React from
 import * as ReactDOM from
   "https://cdn.skypack.dev/react-dom@17.0.1";
 
-import '../App.css';
+import '../Css/Review.css';
 
 function Review() {
   return (

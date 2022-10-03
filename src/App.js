@@ -7,6 +7,7 @@ import ChargeUp from './Components/ChargeUp';
 import Login from './Components/Login';
 import FreeRide from './Components/FreeRide';
 
+
 function App() {
   return (
     <div className="App">
