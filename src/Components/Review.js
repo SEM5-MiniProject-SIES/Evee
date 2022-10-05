@@ -1,7 +1,5 @@
-import * as React from
-  "https://cdn.skypack.dev/react@17.0.1";
-import * as ReactDOM from
-  "https://cdn.skypack.dev/react-dom@17.0.1";
+import React from 'react';
+import { ReactDOM } from 'react';
 
 import '../Css/Review.css';
 
@@ -20,7 +18,7 @@ function Review() {
        
         <Card
           img="https://www.shutterstock.com/image-vector/people-icon-vector-person-user-600w-1886517124.jpg"
-          title="Devang M"
+          title="Devang"
           desc=" One of the finest automobile designs ever found with such ease.
     Everything about this website is just up to the mark,the service,the speed,the quality,the lovely people.
     
