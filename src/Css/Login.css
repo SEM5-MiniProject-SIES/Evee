@@ -10,10 +10,10 @@
   .Auth-form-container {
     display: flex;
     justify-content: center;
-    position: fixed;
+    position: relative;
     align-items: center;
     width: 100vw;
-    height: 100vh;
+    height: 80vh;
   }
   
   .Auth-form {

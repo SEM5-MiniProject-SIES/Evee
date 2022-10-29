@@ -6,6 +6,7 @@ import Products from './Components/Products';
 import ChargeUp from './Components/ChargeUp';
 import Login from './Components/Login';
 import FreeRide from './Components/FreeRide';
+import Footer from './Components/Footer';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         </Routes>
 
       </Router>
+      <Footer/>
     </div>
   );
 }

@@ -20,7 +20,6 @@ const Products = () => {
     );
     return (
         <div className="main_content">
-            
             {listItems}
         </div>
 
