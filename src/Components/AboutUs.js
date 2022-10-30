@@ -16,9 +16,9 @@ export default function AboutUs() {
      </div>
 
      <div className="companydetails">
-       <h2>Blah blah info about company and other stuff</h2>
-       <h2>Aur 1-2 lines add karde aman yr mai karta hoon</h2>
-       <h2>Like description likh sakte idhar</h2>
+       <h2>Name of the Company</h2>
+       <h2>Some basic information about the company</h2>
+       <h2>Information about the product</h2>
      </div>
 
      <div className="founderinfo">
@@ -26,19 +26,26 @@ export default function AboutUs() {
         <a href="https://en.wikipedia.org/wiki/Isaac_Newton"> <img id = "newton" src= {newton} alt="Founder" /></a>
       </div>
       <div className="foundertext">
-        <h2>Some info about the founder and why he has opened this company</h2>
+        <h2>Name Of Owner</h2>
+        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum congue tellus hendrerit convallis pharetra. Quisque eu lectus risus. 
+          Mauris convallis, metus vitae consectetur finibus, ex sapien interdum quam, non sodales metus sem in diam. 
+          Morbi vulputate commodo est eu lobortis. Vivamus ultrices ullamcorper nulla, id blandit sapien semper id. 
+          Quisque aliquet, massa finibus pharetra condimentum, nisi quam ullamcorper ante, volutpat ultrices justo diam non quam. 
+          Vestibulum pharetra nec ipsum eget imperdiet. Fusce elementum mauris non ex mattis consequat.</h2>
       </div>
      </div>
-
+    
      <div className="placeinfo">
       <div className="mapimg">
         <a href="https://www.google.com/maps/place/SIES+parking/@19.0424385,73.0219043,17.25z/data=!4m5!3m4!1s0x3be7c32c3126c233:0x8b9750bd172bf90!8m2!3d19.0426804!4d73.0226144"> <img id = "map" src= {map} alt="Map" /></a>
       </div>
       <div className="showrooms">
         <h2>Mumbai showroom</h2>
-        <h3>Click on the map for precise directions to our nearest dealership</h3>
-    
-        
+        <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum congue tellus hendrerit convallis pharetra. Quisque eu lectus risus. 
+          Mauris convallis, metus vitae consectetur finibus, ex sapien interdum quam, non sodales metus sem in diam. 
+          Morbi vulputate commodo est eu lobortis. Vivamus ultrices ullamcorper nulla, id blandit sapien semper id. 
+          Quisque aliquet, massa finibus pharetra condimentum, nisi quam ullamcorper ante, volutpat ultrices justo diam non quam. 
+          Vestibulum pharetra nec ipsum eget imperdiet. Fusce elementum mauris non ex mattis consequat.</h3>
       </div>
      </div>
     </div>
