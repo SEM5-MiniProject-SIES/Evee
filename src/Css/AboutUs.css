@@ -1,4 +1,9 @@
-/* .aboutushead
+body
+{
+  text-align: center;
+}
+
+.aboutushead
 {
   text-align: center;
 }
@@ -17,53 +22,33 @@
 
 .founderinfo
 {
-    padding-top: 12%;
+  padding-top: 5%;
 }
 
 .founderimg
 {
-    width: 50px;
-    height: 50px;
-    padding-left: 450px;
-}
-
-#newton
-{
-  width: 500px;
-  height: 500px;
-
+  padding-top: 5%;
+  display: flex;
+  justify-content: center;
 }
 
 .foundertext
 {
-    width: 500px;
-    height: 500px;
-    padding-left: 1050px;
+  text-align: center;
 }
 
-.placeinfo
+.mapping
 {
-    padding-top: 12%;
-}
-
-.mapimg
-{
-    width: 50px;
-    height: 50px;
-    padding-left: 1050px;
-}
-
-#map
-{
-  width: 500px;
-  height: 500px;
+  padding-top: 5%;
+  display: flex;
+  justify-content: center;
 
 }
 
 .showrooms
 {
-    width: 500px;
-    height: 500px;
-    padding-left: 450px;
+  text-align: center;
+}
 
-} */
+
+
