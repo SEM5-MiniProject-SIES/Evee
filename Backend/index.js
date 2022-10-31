@@ -6,12 +6,22 @@ const bcrypt = require('bcryptjs')
 const User = require("./models/User");
 
 const SECRET_SIGN = "EveeIsTheBestMiniProjectEver";
+const cors=require("cors");
+
+const corsOptions ={
+   origin:'*', 
+   credentials:true,
+   optionSuccessStatus:200,
+}
+
 
 connectToMongo();
 
 const app = express();
 const port = 5000;
 app.use(express.json());
+app.use(cors(corsOptions))
+
 
 app.get("/", (req, res) => {
   res.send("Hello aman!");

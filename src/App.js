@@ -1,6 +1,6 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Mynavbar from './Components/Mynavbar';
-import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route, Navigate, useNavigate} from 'react-router-dom';
 import Home from './Components/Home';
 import AboutUs from './Components/AboutUs';
 import Products from './Components/Products';
@@ -11,11 +11,39 @@ import Footer from './Components/Footer';
 
 
 function App() {
+
+  const [isLoggedin, setIsLoggedin] = useState(false)
+  const navigator = useNavigate()
+
+  const signUpAuth = (email, password)=>{
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email,password }),
+    };
+    fetch('http://localhost:5000/login', requestOptions)
+        .then(response => response.json())
+        .then(data => {
+          if(data.token){
+            console.log("Signed in");
+            setIsLoggedin(true);
+            navigator('/')
+            return true;
+          }else{
+            console.log("Some error occured")
+            return false;
+          }
+      });
+  }
+  const logout = ()=>{
+    setIsLoggedin(false)
+  }
+
   return (
     <div className="App">
-      <Router>
+      {/* <Router> */}
 
-      <Mynavbar/>
+    <Mynavbar isLoggedIn={isLoggedin} logout={logout}/>
 
         <Routes>
 
@@ -23,12 +51,12 @@ function App() {
           <Route path='/aboutus' element={<AboutUs/>}/>
           <Route path='/products' element={<Products/>}/>
           <Route path='/chargeup' element={<ChargeUp/>}/>
-          <Route path='/login' element={<Login/>}/>
+          <Route path='/login' element={<Login onSignIn={signUpAuth}  navigator={navigator} />}/>
           <Route path='/freeride' element={<FreeRide/>}/>
 
         </Routes>
 
-      </Router>
+      {/* </Router> */}
       <Footer/>
     </div>
   );
