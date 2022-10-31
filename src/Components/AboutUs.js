@@ -2,31 +2,18 @@ import React from 'react'
 import img1 from "../assets/img1.jpg";
 import newton from "../assets/newton.jpg"
 import map from "../assets/map.jpeg"
+import "../Css/AboutUs.css"
 
 export default function AboutUs() {
   return (
-    <div className="container">
-      <h1 className='text-center'>About Us</h1>
-      <div className='row'>
-      <img src={img1} className="col-md-6"/>
-          <div className='col-md-6 text-center' style={{padding:"70px 20px"}}>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin ok is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</div>
-          
-          <div className='col-md-6 text-center' style={{padding:"70px 20px"}}>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin ok is a treatise on the theory of ethics, very popular during the Renaissance. The first liney random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latiy random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latiy random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Lati of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</div>
-      <img src={map} className="col-md-6"/>
-      <div className='col-12 text-center h3 my-4'>Our Founder and Co-Founders</div>
-      <div className='my-4'>
-      <img src={newton} className="col-lg-3 col-sm-6 px-3"/>
-          <img src={newton} className="col-lg-3 col-sm-6 px-3"/>
-          <img src={newton} className="col-lg-3 col-sm-6 px-3"/>
-          <img src={newton} className="col-lg-3 col-sm-6 px-3"/>
-      </div>
-          
-      </div>
-      {/* <div className = "aboutushead">
+    <div className="about">
+      <div className = "aboutushead">
         <h1>About US</h1>
       </div>
 
-     
+     <div className="proimage">
+        <a href="www.google.com"> <img src = {img1} alt = "Bike" /> </a>
+     </div>
 
      <div className="companydetails">
        <h2>Name of the Company</h2>
@@ -60,7 +47,7 @@ export default function AboutUs() {
           Quisque aliquet, massa finibus pharetra condimentum, nisi quam ullamcorper ante, volutpat ultrices justo diam non quam. 
           Vestibulum pharetra nec ipsum eget imperdiet. Fusce elementum mauris non ex mattis consequat.</p>
       </div>
-     </div> */}
+     </div>
     </div>
   );
 }
