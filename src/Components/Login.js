@@ -8,11 +8,14 @@ export default function Login(props) {
   const [passwordIn, setPasswordIn] = useState("");
   const [passwordUp, setPasswordUp] = useState("");
   const [nameUp, setNameUp] = useState("");
+  const [successlogin, setSuccesslogin] = useState(true)
+  
 
   const signin = (event)=>{
     event.preventDefault()
     console.log("email"+emailIn);
     console.log("password"+passwordIn);
+    setSuccesslogin(props.onSignIn(emailIn,passwordIn))
   }
   const signup = (event)=>{
     event.preventDefault()
@@ -36,6 +39,7 @@ export default function Login(props) {
                   Sign Up
                 </span>
               </div>
+              {successlogin? null:<div className='color-primary text-center'>Invalid Email or Password</div>}
               <div className="form-group mt-3">
                 <label>Email address</label>
                 <input

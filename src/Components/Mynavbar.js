@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {Link} from 'react-router-dom'
 
 
-export default function Mynavbar() {
+export default function Mynavbar(props) {
   const [active, setactive] = useState("/");
   const clickHandle = (curroute)=>{
     setactive(curroute);
@@ -24,9 +24,9 @@ export default function Mynavbar() {
                 <li className="nav-item">
                   <Link className={`nav-link ${active==="/products"? "active":""}`} onClick={()=>clickHandle("/products")} to="/products">Products</Link>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link className={`nav-link ${active==="/chargeup"? "active":""}`} onClick={()=>clickHandle("/chargeup")} to="/chargeup">Charge Up</Link>
-                </li>
+                </li> */}
                 <li className="nav-item dropdown">
                   <Link className={`nav-link ${active==="/aboutus"? "active":""}`} onClick={()=>clickHandle("/aboutus")} to="/aboutus">About Us</Link>
                 </li>
@@ -37,9 +37,9 @@ export default function Mynavbar() {
                 <li className="nav-item">
                   <Link className={`btn btn-success ${active==="/freeride"? "active":""}`} onClick={()=>clickHandle("/freeride")} to="/freeride">Free Ride</Link>
                 </li>
-                <li className="nav-item">
+                {!props.isLoggedIn? <li className="nav-item">
                   <Link className={`btn btn-outline-primary mx-3 ${active==="/login"? "active":""}`} onClick={()=>clickHandle("/login")} to="/login">Login</Link>
-                </li>
+                </li>: <button className={`btn btn-outline-danger mx-3`} onClick={()=>props.logout()} to="/login">Log Out</button>}
               </ul>
             </div>
           </div>
