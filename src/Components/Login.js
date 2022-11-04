@@ -4,24 +4,39 @@ import React, { useState } from "react"
 export default function Login(props) {
   let [authMode, setAuthMode] = useState("signin");
   const [emailIn, setEmailIn] = useState("");
-  const [emailUp, setEmailUp] = useState("");
   const [passwordIn, setPasswordIn] = useState("");
-  const [passwordUp, setPasswordUp] = useState("");
   const [nameUp, setNameUp] = useState("");
-  const [successlogin, setSuccesslogin] = useState(true)
   
 
   const signin = (event)=>{
     event.preventDefault()
     console.log("email"+emailIn);
     console.log("password"+passwordIn);
-    setSuccesslogin(props.onSignIn(emailIn,passwordIn))
+    props.onSignIn(emailIn,passwordIn)
   }
   const signup = (event)=>{
     event.preventDefault()
     console.log("name"+nameUp);
-    console.log("email"+emailUp);
-    console.log("password"+passwordUp);
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email:emailIn, password:passwordIn, name:nameUp }),
+    };
+    fetch('http://localhost:5000/signup', requestOptions)
+        .then(response => response.json())
+        .then(data => {
+          if(data.token){
+            console.log("Signed in");
+            const msg = "User created now u can sign in" 
+            console.log("here ");
+            alert(msg)
+            return true;
+          }else{
+            alert(data.error);
+            return false;
+          }
+      });
+    
   }
 
   const changeAuthMode = () => {
@@ -39,7 +54,6 @@ export default function Login(props) {
                   Sign Up
                 </span>
               </div>
-              {successlogin? null:<div className='color-primary text-center'>Invalid Email or Password</div>}
               <div className="form-group mt-3">
                 <label>Email address</label>
                 <input
@@ -98,7 +112,7 @@ export default function Login(props) {
                 type="email"
                 className="form-control mt-1"
                 placeholder="Email Address"
-                onChange={(event)=>setEmailUp(event.target.value)}
+                onChange={(event)=>setEmailIn(event.target.value)}
               />
             </div>
             <div className="form-group mt-3">
@@ -107,7 +121,7 @@ export default function Login(props) {
                 type="password"
                 className="form-control mt-1"
                 placeholder="Password"
-                onChange={(event)=>setPasswordUp(event.target.value)}
+                onChange={(event)=>setPasswordIn(event.target.value)}
               />
             </div>
             <div className="d-grid gap-2 mt-3">

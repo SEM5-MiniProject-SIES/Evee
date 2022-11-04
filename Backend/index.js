@@ -5,8 +5,9 @@ const { body, validationResult } = require("express-validator");
 const bcrypt = require('bcryptjs')
 const User = require("./models/User");
 
-const SECRET_SIGN = "EveeIsTheBestMiniProjectEver";
 const cors=require("cors");
+const Product = require("./models/Product");
+const HomeProduct = require("./models/HomeProduct");
 
 const corsOptions ={
    origin:'*', 
@@ -38,7 +39,6 @@ app.post(
     body("name").isLength({ min: 3 }),
     body("email").isEmail(),
     body("password").isLength({ min: 5 }),
-    body("number").isLength({ min: 10, max: 10 }),
   ],
   async (req, res) => {
     try {
@@ -58,18 +58,17 @@ app.post(
         name: req.body.name,
         email: req.body.email,
         password: passHas,
-        number: req.body.number,
       });
       const data = {
         user:{
           id:user.id
         }
       }
-      const token = jwt.sign(data, SECRET_SIGN);
+      const token = jwt.sign(data, process.env.SECRET_SIGN);
       res.json({token});
     } catch (error) {
       console.error(error.message)
-      res.send("Some error occured")
+      res.json({error: "Some error occured"})
     }
   }
 );
@@ -86,7 +85,7 @@ app.post('/login',async (req,res)=>{
           bcrypt.compare(password, user.password).then((valid)=>{
             if(valid){
               const data = user.id;
-              const token = jwt.sign(data, SECRET_SIGN);
+              const token = jwt.sign(data, process.env.SECRET_SIGN);
               res.status(200).json({token})
             }else{
               res.json({error:"Email or Password incorrect"});
@@ -98,7 +97,78 @@ app.post('/login',async (req,res)=>{
       }
     });
   } catch (error) {
-    res.send("some error occured");
+    res.json({error:"some error occured"})
+    console.log(error.message);
+  }
+});
+
+
+app.post('/addProduct',async (req,res)=>{
+  try {
+    const data = {
+      name:req.body.name,
+      range:req.body.range,
+      topSpeed:req.body.topSpeed,
+      speedrange:req.body.speedrange,
+      timerange:req.body.timerange,
+      speedrange2:req.body.speedrange2,
+      timerange2:req.body.timerange2,
+      price:req.body.price,
+      aboutcar:req.body.aboutcar,
+      aboutcar2:req.body.aboutcar2,
+      modes:req.body.modes,
+      chargetime:req.body.chargetime,
+      power:req.body.power,
+      weight:req.body.weight,
+    }
+      let product = await Product.findOne({ name: data.name });
+      if (product) {
+        return res.json({
+          error: "That Product already exists",
+        });
+      }
+      await Product.create(data);
+      res.json({message:"Successfully added it to The DB"});
+  } catch (error) {
+    res.json({error:"some error occured"})
+    console.log(error.message);
+  }
+});
+
+
+app.post('/addhome',async (req,res)=>{
+  try {
+    const data = {
+      name:req.body.name,
+      range:req.body.range,
+      topSpeed:req.body.topSpeed,
+      speedrange:req.body.speedrange,
+      timerange:req.body.timerange,
+      speedrange2:req.body.speedrange2,
+      timerange2:req.body.timerange2,
+      price:req.body.price,
+      aboutcar:req.body.aboutcar,
+      aboutcar2:req.body.aboutcar2,
+      modes:req.body.modes,
+      chargetime:req.body.chargetime,
+      power:req.body.power,
+      weight:req.body.weight,
+    }
+    await HomeProduct.create(data);
+    res.json({message:"Successfully added it to The DB"});
+  } catch (error) {
+    res.json({error:"some error occured"})
+    console.log(error.message);
+  }
+});
+
+
+app.get('/gethomeproduct',async (req,res)=>{
+  try {
+    let homedata = await HomeProduct.find().sort({_id:-1}).limit(1);
+    res.json(homedata[0])
+  } catch (error) {
+    res.json({error:"some error occured"})
     console.log(error.message);
   }
 });

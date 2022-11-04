@@ -8,6 +8,8 @@ import ChargeUp from './Components/ChargeUp';
 import Login from './Components/Login';
 import FreeRide from './Components/FreeRide';
 import Footer from './Components/Footer';
+require('dotenv').config()
+
 
 
 function App() {
@@ -28,9 +30,10 @@ function App() {
             console.log("Signed in");
             setIsLoggedin(true);
             navigator('/')
+            alert("Successfully signed in")
             return true;
           }else{
-            console.log("Some error occured")
+            alert(data.error)
             return false;
           }
       });
