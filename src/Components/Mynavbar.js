@@ -40,9 +40,22 @@ export default function Mynavbar(props) {
                 <li className="nav-item">
                   <Link className={`btn btn-success ${active==="/freeride"? "active":""}`} onClick={()=>clickHandle("/freeride")} to="/freeride">Free Ride</Link>
                 </li>
-                {!props.isLoggedIn? <li className="nav-item">
-                  <Link className={`btn btn-outline-primary mx-3 ${active==="/login"? "active":""}`} onClick={()=>clickHandle("/login")} to="/login">Login</Link>
-                </li>: <button className={`btn btn-outline-danger mx-3`} onClick={()=>props.logout()} to="/login">Log Out</button>}
+                {
+                  props.username === ""? 
+                    <li className="nav-item">
+                      <Link className={`btn btn-outline-primary mx-3 ${active==="/login"? "active":""}`} onClick={()=>clickHandle("/login")} to="/login">Login</Link>
+                    </li> :
+                    <li className="nav-item dropdown">
+                      <a className="nav-link btn-dark dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {props.username}
+                      </a>
+                      <div className="dropdown-menu bg-secondary " aria-labelledby="navbarDropdown">
+                        <Link className="dropdown-item text-light" to="/orders">Orders</Link>
+                        <div className="dropdown-divider"></div>
+                        <a className="dropdown-item text-light" onClick={props.logout}>Log Out</a>
+                      </div>
+                    </li>
+                }
               </ul>
             </div>
           </div>

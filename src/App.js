@@ -15,7 +15,7 @@ require('dotenv').config()
 
 function App() {
 
-  const [isLoggedin, setIsLoggedin] = useState(false)
+  const [username, setUsername] = useState("")
   const navigator = useNavigate()
 
   const signUpAuth = (email, password)=>{
@@ -27,11 +27,11 @@ function App() {
     fetch('http://localhost:5000/login', requestOptions)
         .then(response => response.json())
         .then(data => {
-          if(data.token){
+          if(data.username){
             console.log("Signed in");
-            setIsLoggedin(true);
             navigator('/')
             alert("Successfully signed in")
+            setUsername(data.username)
             return true;
           }else{
             alert(data.error)
@@ -40,14 +40,14 @@ function App() {
       });
   }
   const logout = ()=>{
-    setIsLoggedin(false)
+    setUsername("")
   }
 
   return (
     <div className="App">
       {/* <Router> */}
 
-    <Mynavbar isLoggedIn={isLoggedin} logout={logout}/>
+    <Mynavbar username={username} logout={logout}/>
 
         <Routes>
 
@@ -56,9 +56,8 @@ function App() {
           <Route path='/products' element={<Products/>}/>
           <Route path='/chargeup' element={<ChargeUp/>}/>
           <Route path='/login' element={<Login onSignIn={signUpAuth}  navigator={navigator} />}/>
-          <Route path='/freeride' element={<FreeRide/>}/>
+          <Route path='/freeride' element={<FreeRide name={username}/>}/>
           <Route path='/buypro' element={<BuyPro/>}/>
-          
 
         </Routes>
 

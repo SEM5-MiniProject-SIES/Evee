@@ -6,15 +6,15 @@ import car2 from "../assets/car2.jpg";
 export default function Home() {
   const [data, setdata] = useState({})
 
-  /*const fetchData = () => {
+  const fetchData = () => {
     return fetch('http://localhost:5000/gethomeproduct')
           .then((response) => response.json())
           .then((data) => setdata(data));
-  }*/
+  }
 
-  /*useEffect(() => {
+  useEffect(() => {
     fetchData();
-  },[])*/
+  },[])
   
   const bold = {
     fontWeight:"800",
@@ -38,7 +38,7 @@ export default function Home() {
           <div className='col-md-2 col-sm-4' style={grey}>Range<br/><span style={bold}>{data.range}</span><span>KM *</span></div>
           <div className='col-md-2 col-sm-4' style={grey}>Top speed<br/><span style={bold}>{data.topSpeed}</span><span>KM/H</span></div>
           <div className='col-md-2 col-sm-4' style={{color:"grey"}}>{data.speedrange}<br/><span style={bold}>{data.timerange}</span><span>sec</span></div>
-          <div className='col-md-3 my-3' style={{textAlign:"right"}}><button className='btn btn-dark p-3'>Buy at {data.price}</button></div>
+          <div className='col-md-3 my-3' style={{textAlign:"right"}}><button className='btn btn-dark p-3'>Buy at Rs {data.price}/-</button></div>
         </div>
       </div>
       <div className='container my-4'>
