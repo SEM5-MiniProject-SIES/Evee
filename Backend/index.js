@@ -7,6 +7,7 @@ const User = require("./models/User");
 
 const cors=require("cors");
 const Product = require("./models/Product");
+const Order = require("./models/Order");
 const HomeProduct = require("./models/HomeProduct");
 const FreeRide = require("./models/FreeRide");
 
@@ -85,10 +86,10 @@ app.post('/login',async (req,res)=>{
         if(user){
           bcrypt.compare(password, user.password).then((valid)=>{
             if(valid){
-              // const data = user.id;
+              const data = user.id;
               // const token = jwt.sign(data, process.env.SECRET_SIGN);
               // res.status(200).json({token})
-              res.status(200).json({username:user.name})
+              res.status(200).json({username:user.name, userid:data})
             }else{
               res.json({error:"Email or Password incorrect"});
             }
@@ -169,6 +170,19 @@ app.get('/gethomeproduct',async (req,res)=>{
   try {
     let homedata = await HomeProduct.find().sort({_id:-1}).limit(1);
     res.json(homedata[0])
+  } catch (error) {
+    res.json({error:"some error occured"})
+    console.log(error.message);
+  }
+});
+
+
+app.get('/getorders',async (req,res)=>{
+  try {
+    let userid = req.body.userid;
+    // let homedata = await HomeProduct.find().sort({_id:-1}).limit(1);
+    let orders = await Order.find({userid});
+    res.json(orders)
   } catch (error) {
     res.json({error:"some error occured"})
     console.log(error.message);
