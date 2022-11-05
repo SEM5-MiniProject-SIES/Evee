@@ -30,6 +30,9 @@ export default function Mynavbar(props) {
                 <li className="nav-item dropdown">
                   <Link className={`nav-link ${active==="/aboutus"? "active":""}`} onClick={()=>clickHandle("/aboutus")} to="/aboutus">About Us</Link>
                 </li>
+                <li className="nav-item dropdown">
+                  <Link className={`nav-link ${active==="/buypro"? "active":""}`} onClick={()=>clickHandle("/buypro")} to="/buypro">TEST</Link>
+                </li>
               </ul>
             </div>
             <div>

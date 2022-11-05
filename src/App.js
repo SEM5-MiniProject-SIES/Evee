@@ -8,6 +8,7 @@ import ChargeUp from './Components/ChargeUp';
 import Login from './Components/Login';
 import FreeRide from './Components/FreeRide';
 import Footer from './Components/Footer';
+import BuyPro from './Components/BuyPro'
 require('dotenv').config()
 
 
@@ -56,6 +57,8 @@ function App() {
           <Route path='/chargeup' element={<ChargeUp/>}/>
           <Route path='/login' element={<Login onSignIn={signUpAuth}  navigator={navigator} />}/>
           <Route path='/freeride' element={<FreeRide/>}/>
+          <Route path='/buypro' element={<BuyPro/>}/>
+          
 
         </Routes>
 

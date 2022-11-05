@@ -6,15 +6,15 @@ import car2 from "../assets/car2.jpg";
 export default function Home() {
   const [data, setdata] = useState({})
 
-  const fetchData = () => {
+  /*const fetchData = () => {
     return fetch('http://localhost:5000/gethomeproduct')
           .then((response) => response.json())
           .then((data) => setdata(data));
-  }
+  }*/
 
-  useEffect(() => {
+  /*useEffect(() => {
     fetchData();
-  },[])
+  },[])*/
   
   const bold = {
     fontWeight:"800",
