@@ -18,11 +18,16 @@
 
 }
 
+img{
+  width:100%,
+}
+
 .mapping
 {
   padding-top: 5%;
   display: flex;
   justify-content: center;
+  width: 100%;
 
 }
 

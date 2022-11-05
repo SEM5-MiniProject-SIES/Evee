@@ -8,6 +8,7 @@ const User = require("./models/User");
 const cors=require("cors");
 const Product = require("./models/Product");
 const HomeProduct = require("./models/HomeProduct");
+const FreeRide = require("./models/FreeRide");
 
 const corsOptions ={
    origin:'*', 
@@ -85,8 +86,9 @@ app.post('/login',async (req,res)=>{
           bcrypt.compare(password, user.password).then((valid)=>{
             if(valid){
               const data = user.id;
-              const token = jwt.sign(data, process.env.SECRET_SIGN);
-              res.status(200).json({token})
+              // const token = jwt.sign(data, process.env.SECRET_SIGN);
+              // res.status(200).json({token})
+              res.status(200).json({username:user.name})
             }else{
               res.json({error:"Email or Password incorrect"});
             }
@@ -136,7 +138,7 @@ app.post('/addProduct',async (req,res)=>{
 });
 
 
-app.post('/addhome',async (req,res)=>{
+app.post('/addhomeproduct',async (req,res)=>{
   try {
     const data = {
       name:req.body.name,
@@ -172,6 +174,39 @@ app.get('/gethomeproduct',async (req,res)=>{
     console.log(error.message);
   }
 });
+
+
+app.get('/getproducts',async (req,res)=>{
+  try {
+    let products = await Product.find().sort({id:-1});
+    res.json(products)
+  } catch (error) {
+    res.json({error:"some error occured"})
+    console.log(error.message);
+  }
+});
+
+
+app.post('/addfreeride',async (req,res)=>{
+  try {
+    const data = {
+      name:req.body.name,
+      phone:req.body.phone,
+    }
+      let freeride  = await FreeRide.findOne({ phone: data.phone });
+      if (freeride) {
+        return res.json({
+          message: "Already registered",
+        });
+      }
+      await FreeRide.create(data);
+      res.json({message:"Successfully Registered"});
+  } catch (error) {
+    res.json({error:"some error occured"})
+    console.log(error.message);
+  }
+});
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

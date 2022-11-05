@@ -36,8 +36,8 @@ export default function AboutUs() {
      </div>
     
      <div className="placeinfo">
-      <div className="mapimg">
-        <a href="https://www.google.com/maps/place/SIES+parking/@19.0424385,73.0219043,17.25z/data=!4m5!3m4!1s0x3be7c32c3126c233:0x8b9750bd172bf90!8m2!3d19.0426804!4d73.0226144"> <img id = "map" src= {map} alt="Map" /></a>
+      <div className="mapping">
+        <a href="https://www.google.com/maps/place/SIES+parking/@19.0424385,73.0219043,17.25z/data=!4m5!3m4!1s0x3be7c32c3126c233:0x8b9750bd172bf90!8m2!3d19.0426804!4d73.0226144"> <img id = "map" src= {map} alt="Map"/></a>
       </div>
       <div className="showrooms">
         <h2>Mumbai showroom</h2>
