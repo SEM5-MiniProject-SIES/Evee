@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import Mynavbar from './Components/Mynavbar';
-import {BrowserRouter as Router, Routes, Route, Navigate, useNavigate} from 'react-router-dom';
+import {Routes, Route, useNavigate} from 'react-router-dom';
 import Home from './Components/Home';
 import AboutUs from './Components/AboutUs';
 import Products from './Components/Products';
@@ -58,6 +58,7 @@ function App() {
           <Route path='/login' element={<Login onSignIn={signUpAuth}  navigator={navigator} />}/>
           <Route path='/freeride' element={<FreeRide name={username}/>}/>
           <Route path='/buypro' element={<BuyPro/>}/>
+          <Route path='/orders' element={<BuyPro/>}/>
 
         </Routes>
 

@@ -85,7 +85,7 @@ app.post('/login',async (req,res)=>{
         if(user){
           bcrypt.compare(password, user.password).then((valid)=>{
             if(valid){
-              const data = user.id;
+              // const data = user.id;
               // const token = jwt.sign(data, process.env.SECRET_SIGN);
               // res.status(200).json({token})
               res.status(200).json({username:user.name})
