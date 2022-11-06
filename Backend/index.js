@@ -3,9 +3,9 @@ const express = require("express");
 const jwt = require('jsonwebtoken');
 const { body, validationResult } = require("express-validator");
 const bcrypt = require('bcryptjs')
-const User = require("./models/User");
-
 const cors=require("cors");
+
+const User = require("./models/User");
 const Product = require("./models/Product");
 const Order = require("./models/Order");
 const FreeRide = require("./models/FreeRide");
@@ -21,18 +21,19 @@ connectToMongo();
 
 const app = express();
 const port = 5000;
+
 app.use(express.json());
 app.use(cors(corsOptions))
 
 
-app.get("/", (req, res) => {
-  res.send("Hello aman!");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello aman!");
+// });
 
-app.get("/login", (req, res) => {
-  console.log(req.body);
-  res.send(req.body);
-});
+// app.get("/login", (req, res) => {
+//   console.log(req.body);
+//   res.send(req.body);
+// });
 
 app.post(
   "/signup",
