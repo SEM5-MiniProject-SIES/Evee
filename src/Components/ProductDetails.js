@@ -1,13 +1,31 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import car2 from "../assets/car2.jpg";
 import car1 from "../assets/car1.jpg";
 import { useLocation } from 'react-router-dom';
+import OrderModal from './OrderModal';
 
 
 
 export default function ProductDetails(props) {
     //add state property while routing
     const data = useLocation().state    
+    const [modal, setModal] = useState(false)
+    if(modal) {
+      document.body.classList.add('active-modal')
+    } else {
+      document.body.classList.remove('active-modal')
+    }
+    const openOrderModal = ()=>{
+      if(props.userid){
+        setModal(true);
+      }else{
+        alert("Please sign in to continue")
+      }
+    }
+  
+    const closeOrderModal = ()=>{
+      setModal(false);
+    }
     const bold = {
         fontWeight:"800",
         fontSize:"30px",
@@ -18,51 +36,6 @@ export default function ProductDetails(props) {
         color: "grey",
         borderRight: "2px solid #e0e0e0",
       }
-        //Razor pay integration
-  const loadScript = (src) => {
-    return new Promise( (resolve) => {
-      const script = document.createElement('script')
-      script.src = src
-      script.onload = () => {
-        resolve(true)
-      }
-      script.onerror = () => {
-        resolve(false)
-      }
-      document.body.appendChild(script)
-    })
-  }
-
-  const displayRazorpay = async (amount) => {
-    if(props.userid){
-
-      const res = await loadScript ('http://checkout.razorpay.com/v1/checkout.js')
-      if (!res){
-        alert('Check your connection...Loading Razorpay Failed...')
-        return
-      }
-  
-      const options ={
-        key:'rzp_test_5gzhcdXn6n5plT',
-        currency:'INR',
-        amount: parseInt(amount.replace(/,/g, ''))*100,
-        name: 'Evee',
-        description:'Thanks for shopping',
-        image:'idhar logo daal website ka warna yeh hata de ur wish',
-        handler: function (response){
-          alert(response.razorpay_payment_id)
-          alert("Payment Successful")
-        },
-        prefill :{
-          name:"Evee"
-        }
-      };
-      const paymentObject = new window.Razorpay(options)
-      paymentObject.open()
-    }else{
-      alert("Please sign in to continue")
-    }
-  }
     return (
         <div>
             <div className='container'>
@@ -94,13 +67,14 @@ export default function ProductDetails(props) {
                     </button>
                 </div>  
           </div>
+          {modal && <OrderModal price={data.price} productid={data._id} userid={props.userid} productname={data.name} closeOrderModal={closeOrderModal}/>}
           <div className="container">
             <div className='row mt-4' style={{textAlign:"center"}}>
               <div className='col-md-3 my-3' style={{textAlign:"center", fontWeight:"900", fontSize:"40px"}}>{data.name}</div>
               <div className='col-md-2 col-sm-4' style={grey}>Range<br/><span style={bold}>{data.range}</span><span>KM *</span></div>
               <div className='col-md-2 col-sm-4' style={grey}>Top speed<br/><span style={bold}>{data.topSpeed}</span><span>KM/H</span></div>
               <div className='col-md-2 col-sm-4' style={{color:"grey"}}>{data.speedrange}<br/><span style={bold}>{data.timerange}</span><span>sec</span></div>
-              <div className='col-md-3 my-3' style={{textAlign:"right"}}><button onClick={()=>displayRazorpay(data.price)} className='btn btn-dark p-3'>Buy at Rs {data.price}/-</button></div>
+              <div className='col-md-3 my-3' style={{textAlign:"right"}}><button onClick={openOrderModal}  className='btn btn-dark p-3'>Buy at Rs {data.price}/-</button></div>
             </div>
           </div>
           <div className='container my-4'>

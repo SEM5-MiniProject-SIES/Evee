@@ -89,7 +89,7 @@
     font-size: 8vw;
   }
   
-  .main_content .card {
+  .main_content  {
     width: 30%;
     border-radius: 15px;
     -webkit-box-orient: vertical;
@@ -104,16 +104,16 @@
     margin-bottom: 50px;
   }
   
-  .main_content .card .card_img {
+  .main_content   {
     /* margin-top: -5vw; */
     margin-left: -1vw;
   }
   
-  .main_content .card .card_img img {
+  .main_content {
     width: 200px;
   }
   
-  .main_content .card .card_header {
+  .main_content {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -122,29 +122,29 @@
     margin: 25px 0;
   }
   
-  .main_content .card .card_header h2 {
+  .main_content  {
     font-size: 18px;
   }
   
-  .main_content .card .card_header p {
+  .main_content{
     font-size: 14px;
     text-align: center;
     color: rgb(97, 97, 97);
     margin: 8px 0;
   }
   
-  .main_content .card .card_header .price {
+  .main_content {
     font-size: 25px;
     color: #0dcdfd;
   }
   
-  .main_content .card .card_header .price span {
+  .main_content.price  {
     font-size: 15px;
     display: inline-block;
     vertical-align: top;
   }
   
-  .main_content .card:hover {
+  .main_content  {
     background-color: #2b3039;
     color: #fff;
     -webkit-transform: scale(1.1);
@@ -152,7 +152,7 @@
     cursor: pointer;
   }
   
-  .main_content .card:hover .btnProduct {
+  .main_content.btnProduct {
     background-color: #0dcdfd;
     color: #fff;
   }
@@ -170,3 +170,18 @@
     transition: background-color .3s ease;
     overflow: hidden;
   }
+
+
+.cardtext{
+  width: 100%;
+  color: white;
+  text-align: center;
+  padding-top: 30%;
+  opacity: 0;
+  height: 100%;
+}
+
+.cardtext:hover{
+  opacity: 1;
+  background-color: rgba(0,0,0,0.6)
+}

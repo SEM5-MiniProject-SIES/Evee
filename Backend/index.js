@@ -8,7 +8,6 @@ const User = require("./models/User");
 const cors=require("cors");
 const Product = require("./models/Product");
 const Order = require("./models/Order");
-const HomeProduct = require("./models/HomeProduct");
 const FreeRide = require("./models/FreeRide");
 
 const corsOptions ={
@@ -139,36 +138,35 @@ app.post('/addProduct',async (req,res)=>{
 });
 
 
-app.post('/addhomeproduct',async (req,res)=>{
+
+app.post('/addorder',async (req,res)=>{
   try {
     const data = {
-      name:req.body.name,
-      range:req.body.range,
-      topSpeed:req.body.topSpeed,
-      speedrange:req.body.speedrange,
-      timerange:req.body.timerange,
-      speedrange2:req.body.speedrange2,
-      timerange2:req.body.timerange2,
-      price:req.body.price,
-      aboutcar:req.body.aboutcar,
-      aboutcar2:req.body.aboutcar2,
-      modes:req.body.modes,
-      chargetime:req.body.chargetime,
-      power:req.body.power,
-      weight:req.body.weight,
+      userid:req.body.userid,
+      address:req.body.address,
+      productid:req.body.productid,
+      paymentid:req.body.paymentid,
+      amount:req.body.amount,
+      productname:req.body.productname,
     }
-    await HomeProduct.create(data);
-    res.json({message:"Successfully added it to The DB"});
+      let product = await Product.findById(data.productid);
+      let user = await User.findById(data.userid);
+      if (product && user) {
+        await Order.create(data);
+        res.json({message:"Order Placed Successfully"})
+      }else{
+        res.json({message:"Some thing went wrong"});
+      }
   } catch (error) {
     res.json({error:"some error occured"})
-    console.log(error.message);
+    console.log(error.message); 
   }
 });
 
 
 app.get('/gethomeproduct',async (req,res)=>{
   try {
-    let homedata = await HomeProduct.find().sort({_id:-1}).limit(1);
+    let homedata = await Product.find().sort({_id:-1}).limit(1);
     res.json(homedata[0])
   } catch (error) {
     res.json({error:"some error occured"})
@@ -177,11 +175,10 @@ app.get('/gethomeproduct',async (req,res)=>{
 });
 
 
-app.get('/getorders',async (req,res)=>{
+app.post('/getorders',async (req,res)=>{
   try {
     let userid = req.body.userid;
-    // let homedata = await HomeProduct.find().sort({_id:-1}).limit(1);
-    let orders = await Order.find({userid});
+    let orders = await Order.find({userid}).sort({_id:-1});
     res.json(orders)
   } catch (error) {
     res.json({error:"some error occured"})

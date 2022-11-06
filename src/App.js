@@ -11,6 +11,7 @@ import Footer from './Components/Footer';
 import BuyPro from './Components/BuyPro'
 import Orders from './Components/Orders'
 import ProductDetails from './Components/ProductDetails';
+import OrderModal from './Components/OrderModal';
 require('dotenv').config()
 
 
@@ -60,6 +61,7 @@ function App() {
       });
   }
   const logout = ()=>{
+    navigator('/')
     setUsername("")
   }
 
@@ -74,11 +76,10 @@ function App() {
           <Route path='/' element={<Home userid={userid}/>}/>
           <Route path='/aboutus' element={<AboutUs/>}/>
           <Route path='/products' element={<Products/>}/>
-          <Route path='/productdetail' element={<ProductDetails/>}/>
+          <Route path='/productdetail' element={<ProductDetails userid={userid}/>}/>
           <Route path='/chargeup' element={<ChargeUp/>}/>
           <Route path='/login' element={<Login onSignIn={signUpAuth}  navigator={navigator} />}/>
           <Route path='/freeride' element={<FreeRide name={username}/>}/>
-          <Route path='/buypro' element={<BuyPro/>}/>
           <Route path='/orders' element={<Orders userid={userid}/>}/>
 
         </Routes>
