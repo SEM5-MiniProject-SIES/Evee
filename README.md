@@ -1,5 +1,3 @@
-Apologies for the oversight. I've updated the README to include the usage of MongoDB as the backend database.
-
 # Evee - Online EV Selling and Buying Portal
 
 ![Evee Logo](https://yourwebsite.com/path/to/logo.png)
