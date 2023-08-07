@@ -1,70 +1,126 @@
-# Getting Started with Create React App
+Apologies for the oversight. I've updated the README to include the usage of MongoDB as the backend database.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Evee - Online EV Selling and Buying Portal
 
-## Available Scripts
+![Evee Logo](https://yourwebsite.com/path/to/logo.png)
 
-In the project directory, you can run:
+Welcome to Evee, your ultimate destination for buying and selling Electric Vehicles (EVs) online! Evee is a user-friendly platform that connects buyers and sellers of electric cars, bikes, scooters, and more. With an intuitive interface and secure transactions, Evee aims to make the process of buying and selling EVs a breeze.
 
-### `npm start`
+## Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [Introduction](#introduction)
+- [Features](#features)
+- [Demo](#demo)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
+- [License](#license)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Introduction
 
-### `npm test`
+Evee is an online marketplace designed specifically for electric vehicle enthusiasts. Whether you are looking to purchase a brand new electric car or sell your electric scooter, Evee offers a seamless experience. Users can create accounts, list their EVs for sale, explore a wide range of available electric vehicles, and securely complete transactions.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
 
-### `npm run build`
+- **User Registration and Authentication**: Users can create accounts and log in securely.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Browse EV Listings**: Users can explore a diverse range of electric cars, bikes, and scooters listed for sale.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Search and Filters**: Users can easily search for specific EV models or apply filters based on preferences.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **EV Details**: Comprehensive information and images for each electric vehicle listing.
 
-### `npm run eject`
+- **Add to Favorites**: Users can add EVs to their favorites list for easy access later.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Sell EVs**: Sellers can create listings for their electric vehicles, including images and details.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Edit and Delete Listings**: Sellers can edit or remove their EV listings as needed.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Messaging**: Users can communicate with each other through a messaging system for inquiries and negotiation.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Secure Transactions**: Evee ensures secure payment processing for completing purchases.
 
-## Learn More
+- **User Ratings and Reviews**: Users can leave ratings and reviews for the electric vehicles they purchased.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Responsive Design**: The website is optimized for various devices, ensuring a seamless experience across desktops, tablets, and smartphones.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Demo
 
-### Code Splitting
+Check out the live demo of Evee at [https://www.evee-demo.com](https://www.evee-demo.com)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Installation
 
-### Analyzing the Bundle Size
+To run Evee locally on your machine, follow these steps:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. Clone the repository:
 
-### Making a Progressive Web App
+   ```bash
+   git clone https://github.com/SEM5-MiniProject-SIES/Evee.git
+   cd Evee
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+2. Install dependencies:
 
-### Advanced Configuration
+   ```bash
+   npm install
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+3. Configure the environment variables:
 
-### Deployment
+   - Create a `.env` file in the root of the `Evee` folder.
+   - Set the required environment variables, including your MongoDB connection string, in the `.env` file.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+4. Run the development server:
 
-### `npm run build` fails to minify
+   ```bash
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+5. Open your browser and visit [http://localhost:3000](http://localhost:3000) to access Evee.
+
+## Usage
+
+- As a **Buyer**, you can:
+  - Create an account or log in if you already have one.
+  - Browse through a wide selection of electric vehicles.
+  - Search for specific EV models or apply filters based on preferences.
+  - Add EVs to your favorites list.
+  - Communicate with sellers through the messaging system.
+  - Leave ratings and reviews for electric vehicles you purchased.
+
+- As a **Seller**, you can:
+  - Create an account or log in if you already have one.
+  - List your electric vehicles for sale with images and details.
+  - Edit or delete your EV listings as needed.
+  - Communicate with buyers through the messaging system.
+
+## Technologies Used
+
+- Front-end: HTML, CSS, JavaScript, ReactJS
+- Back-end: Node.js, Express.js, MongoDB
+- Payment Processing: Stripe API
+- Messaging: Socket.io
+- Deployment: Heroku
+
+## Contributing
+
+We welcome contributions to enhance the features and fix issues. To contribute, follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make changes and commit them.
+4. Push the changes to your forked repository.
+5. Submit a pull request to the main repository.
+
+Please ensure that your code adheres to the existing code style and include appropriate test cases for your changes.
+
+## License
+
+Evee is licensed under the [MIT License](LICENSE).
+
+---
+
+Thank you for choosing Evee! We hope you find your dream electric vehicle or make successful sales on our platform. If you encounter any issues or have suggestions for improvements, please feel free to [open an issue](https://github.com/SEM5-MiniProject-SIES/Evee/issues) or reach out to our team.
+
+Happy EV shopping and selling! 🚗⚡️
